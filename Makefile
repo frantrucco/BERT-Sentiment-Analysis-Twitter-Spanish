@@ -122,6 +122,23 @@ cleantrain:
 	@echo "Cleaning the finetuned model."
 	rm $(FINETUNED_MODEL)/*
 
+.PHONY: help
+help:
+	@echo "To run all the commands in order:"
+	@echo "    make preprocess  # Or make intertass uba"
+	@echo "    make prepretrain "
+	@echo "    make pretrain"
+	@echo "    make train"
+	@echo ""
+	@echo "Equivalently:"
+	@echo "    make all"
+	@echo ""
+	@echo "To clean just type clean followed by the command to clean:"
+	@echo "    make cleanpreprocess"
+	@echo ""
+	@echo "To clean all:"
+	@echo "    make clean"
+
 
 .PHONY: clean
 clean: cleanpreprocess cleanprepretrain cleanpretrain cleantrain
