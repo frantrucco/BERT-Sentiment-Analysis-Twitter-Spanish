@@ -92,7 +92,7 @@ train:
 .PHONY: cleanuba
 cleanuba:
 	@echo "Cleaning the preprocessing outputs of uba preprocessing."
-    rm $(PREPRETRAIN_DATA)
+	rm $(PREPRETRAIN_DATA)
 
 
 .PHONY: cleanintertass
