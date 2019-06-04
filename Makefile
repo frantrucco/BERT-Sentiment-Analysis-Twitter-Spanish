@@ -19,6 +19,7 @@ PREPROCESS = './scripts/preprocess'
 
 uba:
 	@echo "Preprocessing dataset uba to create the prepretrain data."
+	python3 $(PREPROCESS)/clean_uba.py $(UBA) $(PREPRETRAIN_DATA)
 
 intertass:
 	@echo "Preprocessing dataset Inter-TASS to create the training data."
