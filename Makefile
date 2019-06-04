@@ -141,15 +141,15 @@ help:
 	@echo ""
 	@echo "The dependency graph is as follows:"
 	@echo ""
-	@echo "    RAW INTERTASS ------------------------[intertass]------> TRAINING DATA"
+	@echo "    RAW INTERTASS -----------------------[intertass]------> TRAINING DATA"
 	@echo ""
-	@echo "    RAW UBA ------------------------------[uba]------------> PREPRETRAINING DATA"
+	@echo "    RAW UBA -----------------------------[uba]------------> PREPRETRAINING DATA"
 	@echo ""
-	@echo "    PREPRETRAINING DATA ------------------[prepretrain]----> PRETRAINING DATA"
+	@echo "    PREPRETRAINING DATA -----------------[prepretrain]----> PRETRAINING DATA"
 	@echo ""
-	@echo "    PRETRAINING DATA + BERT MODEL --------[pretrain]-------> PRETRAINED MODEL"
+	@echo "    PRETRAINING DATA + BERT MODEL -------[pretrain]-------> PRETRAINED MODEL"
 	@echo ""
-	@echo "    PRETRAINING MODEL + TRAINING DATA ----[train]----------> FINETUNED MODEL"
+	@echo "    PRETRAINED MODEL + TRAINING DATA ----[train]----------> FINETUNED MODEL"
 
 
 .PHONY: clean
