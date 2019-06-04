@@ -1,9 +1,9 @@
 UBA = "/home/francolq/tass2018/uba.txt"
-INTERTASS = "/home/francolq/tass2019/InterTASS/"
+INTERTASS = "/home/francolq/tass2019/InterTASS"
 
 PREPRETRAIN_DATA = "./data/prepretrain/uba.txt"
 PRETRAIN_DATA = "./data/pretrain/pretraining.tfrecord"
-TRAIN_DATA = "./data/train/"
+TRAIN_DATA = "./data/train"
 
 
 BERT_MODEL = "./models/bert"
