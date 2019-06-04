@@ -16,6 +16,7 @@ SEQ_LENGTH = 64
 BATCH_SIZE = 32
 
 PREPROCESS = './scripts/preprocess'
+TRAIN = './scripts/train'
 
 
 .PHONY: uba
