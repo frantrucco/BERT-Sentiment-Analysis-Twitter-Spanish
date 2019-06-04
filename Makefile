@@ -108,6 +108,7 @@ cleanpreprocess: cleanuba cleanintertass
 .PHONY: cleanprepretrain
 cleanprepretrain:
 	@echo "Cleaning the pretraining data."
+	rm $(PRETRAIN_DATA)
 
 
 .PHONY: cleanpretrain
