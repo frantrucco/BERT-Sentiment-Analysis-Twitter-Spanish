@@ -1,27 +1,28 @@
 UBA = "/home/francolq/tass2018/uba.txt"
 INTERTASS = "/home/francolq/tass2019/InterTASS/"
 
-PREPRETRAIN_DATA = "data/prepretrain/uba.txt"
-PRETRAIN_DATA = "data/pretrain/pretraining.tfrecord"
-TRAIN_DATA = "data/train/"
+PREPRETRAIN_DATA = "./data/prepretrain/uba.txt"
+PRETRAIN_DATA = "./data/pretrain/pretraining.tfrecord"
+TRAIN_DATA = "./data/train/"
 
 
-BERT_MODEL = "models/bert"
-PRETRAIN_MODEL = "models/pretrained/pretraining_output"
-FINETUNED_MODEL = "models/finetuned"
+BERT_MODEL = "./models/bert"
+PRETRAIN_MODEL = "./models/pretrained/pretraining_output"
+FINETUNED_MODEL = "./models/finetuned"
 
 
 TRAINING_STEPS = 10000
 SEQ_LENGTH = 64
 BATCH_SIZE = 32
 
-PREPROCESS = 'scripts/preprocess'
+PREPROCESS = './scripts/preprocess'
 
 uba:
 	@echo "Preprocessing dataset uba to create the prepretrain data."
 
 intertass:
 	@echo "Preprocessing dataset Inter-TASS to create the training data."
+	python3 $(PREPROCESS)/clean_intertass.py $(INTERTASS) $(TRAIN_DATA)
 
 preprocess: uba intertass
 
