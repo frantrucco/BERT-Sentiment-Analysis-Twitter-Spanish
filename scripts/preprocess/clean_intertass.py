@@ -1,4 +1,5 @@
 import csv
+import sys
 import os
 from tass import InterTASSReader as Reader
 from cleaner import clean
@@ -23,16 +24,13 @@ DATASET_FILES = {
     }
 }
 
-
-IN_DIR = '/home/ftrucco/InterTASS'
-
-OUT_DIR = '/home/ftrucco/InterTASS/cleaned'
-
-
 TYPES = ["dev", "test", "train"]
 
 
 if __name__ == '__main__':
+    IN_DIR = sys.argv[1]
+    OUT_DIR = sys.argv[2]
+
     data = {}
 
     try:
