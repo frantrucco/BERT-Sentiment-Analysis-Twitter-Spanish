@@ -73,6 +73,20 @@ pretrain:
 .PHONY: train
 train:
 	@echo "Fine tuning the model using the Inter-TASS dataset."
+	python $(TRAIN)/run_classifier.py \
+    --task_name=TASS \
+    --do_train=true \
+    --do_eval=true \
+    --data_dir=$TRAIN_DATA \
+    --vocab_file=$BERT_MODEL/vocab.txt \
+    --bert_config_file=$BERT_MODEL/bert_config.json \
+    --init_checkpoint=$PRETRAIN_MODEL/model.ckpt-$TRAINING_STEPS \
+    --max_seq_length=$SEQ_LENGTH \
+    --train_batch_size=$BATCH_SIZE \
+    --learning_rate=2e-5 \
+    --num_train_epochs=2.0 \
+    --output_dir=$FINETUNED_MODEL \
+    2>&1 | tee ./log/train
 
 
 .PHONY: cleanuba
