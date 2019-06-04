@@ -114,6 +114,7 @@ cleanprepretrain:
 .PHONY: cleanpretrain
 cleanpretrain:
 	@echo "Cleaning the pretrained model."
+	rm -fr $(PRETRAIN_MODEL)
 
 
 .PHONY: cleantrain
