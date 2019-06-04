@@ -17,45 +17,70 @@ BATCH_SIZE = 32
 
 PREPROCESS = './scripts/preprocess'
 
+
+.PHONY: uba
 uba:
 	@echo "Preprocessing dataset uba to create the prepretrain data."
 	python3 $(PREPROCESS)/clean_uba.py $(UBA) $(PREPRETRAIN_DATA)
 
+
+.PHONY: intertass
 intertass:
 	@echo "Preprocessing dataset Inter-TASS to create the training data."
 	python3 $(PREPROCESS)/clean_intertass.py $(INTERTASS) $(TRAIN_DATA)
 
+
+.PHONY: preprocess
 preprocess: uba intertass
 
+
+.PHONY: prepretrain
 prepretrain:
 	@echo "Creating the pretraining data from uba preprocessed dataset."
 
+
+.PHONY: pretrain
 pretrain:
 	@echo "Pretraining using the pretraining data."
 
+
+.PHONY: train
 train:
 	@echo "Fine tuning the model using the Inter-TASS dataset."
 
+
+.PHONY: cleanuba
 cleanuba:
 	@echo "Cleaning the preprocessing outputs of uba preprocessing."
 
+
+.PHONY: cleanintertass
 cleanintertass:
 	@echo "Cleaning the preprocessing outputs of intertass preprocessing."
 
+
+.PHONY: cleanpreprocess
+cleanpreprocess: cleanuba cleanintertass
+
+
+.PHONY: cleanprepretrain
 cleanprepretrain:
 	@echo "Cleaning the pretraining data."
 
+
+.PHONY: cleanpretrain
 cleanpretrain:
 	@echo "Cleaning the pretrained model."
 
+
+.PHONY: cleantrain
 cleantrain:
 	@echo "Cleaning the finetuned model."
 
-clean: cleanuba cleanintertass cleanprepretrain cleanpretrain	\
-       cleanintertass cleantrain
 
+.PHONY: clean
+clean: cleanpreprocess cleanprepretrain cleanpretrain cleantrain
+
+
+.PHONY: all
 all: uba intertass prepretrain pretrain train
-
-.PHONY: all clean uba intertass preprocess prepretrain pretrain train	\
-        cleanuba cleanintertass cleanprepretrain cleanpretrain			\
-        cleantrain
