@@ -38,6 +38,17 @@ preprocess: uba intertass
 .PHONY: prepretrain
 prepretrain:
 	@echo "Creating the pretraining data from uba preprocessed dataset."
+	python $(TRAIN)/create_pretraining_data.py \
+    --input_file=$(UBA_CLEANED) \
+    --output_file=$(PRETRAIN_DATA) \
+    --vocab_file=$(BERT_MODEL)/vocab.txt \
+    --do_lower_case=False \
+    --max_seq_length=$(SEQ_LENGTH) \
+    --max_predictions_per_seq=20 \
+    --masked_lm_prob=0.15 \
+    --random_seed=12345 \
+    --dupe_factor=5 \
+    2>&1 | tee ./log/prepretrain
 
 
 .PHONY: pretrain
