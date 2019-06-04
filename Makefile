@@ -120,6 +120,7 @@ cleanpretrain:
 .PHONY: cleantrain
 cleantrain:
 	@echo "Cleaning the finetuned model."
+	rm $(FINETUNED_MODEL)/*
 
 
 .PHONY: clean
