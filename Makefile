@@ -54,6 +54,20 @@ prepretrain:
 .PHONY: pretrain
 pretrain:
 	@echo "Pretraining using the pretraining data."
+	python $(TRAIN)/run_pretraining.py \
+    --input_file=$PRETRAIN_DATA \
+    --output_dir=$PRETRAIN_MODEL \
+    --do_train=True \
+    --do_eval=True \
+    --bert_config_file=$BERT_MODEL/bert_config.json \
+    --init_checkpoint=$BERT_MODEL/bert_model.ckpt \
+    --train_batch_size=$BATCH_SIZE \
+    --max_seq_length=$SEQ_LENGTH \
+    --max_predictions_per_seq=20 \
+    --num_train_steps=$TRAINING_STEPS \
+    --num_warmup_steps=10 \
+    --learning_rate=2e-5 \
+    2>&1 | tee ./log/pretrain
 
 
 .PHONY: train
