@@ -1,7 +1,8 @@
 UBA = /home/francolq/tass2018/uba.txt
 INTERTASS = /home/francolq/tass2019/InterTASS
 
-PREPRETRAIN_DATA = ./data/prepretrain/uba.txt
+PREPROCESSED_UBA = ./data/prepretrain/uba.txt
+PREPRETRAIN_DATA = ./data/prepretrain/splited*
 PRETRAIN_DATA = ./data/pretrain/pretraining.tfrecord
 TRAIN_DATA = ./data/train
 
@@ -22,7 +23,7 @@ TRAIN = ./scripts/train
 .PHONY: uba
 uba:
 	@echo "Preprocessing dataset uba to create the prepretrain data."
-	python3 $(PREPROCESS)/clean_uba.py $(UBA) $(PREPRETRAIN_DATA)
+	python3 $(PREPROCESS)/clean_uba.py $(UBA) $(PREPROCESSED_UBA)
 
 
 .PHONY: intertass
@@ -31,8 +32,14 @@ intertass:
 	python3 $(PREPROCESS)/clean_intertass.py $(INTERTASS) $(TRAIN_DATA)
 
 
+.PHONY: splituba
+preprocess:
+	@echo "Splitting the prepretraining data for better performance."
+	split -d -l 2000000 $(PREPROCESSED_UBA) splited
+
+
 .PHONY: preprocess
-preprocess: uba intertass
+preprocess: uba intertass splituba
 
 
 .PHONY: prepretrain
@@ -122,6 +129,7 @@ cleantrain:
 	@echo "Cleaning the finetuned model."
 	rm $(FINETUNED_MODEL)/*
 
+
 .PHONY: help
 help:
 	@echo "To run all the commands in order:"
@@ -143,7 +151,9 @@ help:
 	@echo ""
 	@echo "    RAW INTERTASS -----------------------[intertass]------> TRAINING DATA"
 	@echo ""
-	@echo "    RAW UBA -----------------------------[uba]------------> PREPRETRAINING DATA"
+	@echo "    RAW UBA -----------------------------[uba]------------> PREPROCESSED UBA"
+	@echo ""
+	@echo "    PREPROCESSED UBA --------------------[splituba]-------> PREPRETRAINING DATA"
 	@echo ""
 	@echo "    PREPRETRAINING DATA -----------------[prepretrain]----> PRETRAINING DATA"
 	@echo ""
