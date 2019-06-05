@@ -2,7 +2,7 @@ UBA = /home/francolq/tass2018/uba.txt
 INTERTASS = /home/francolq/tass2019/InterTASS
 
 PREPROCESSED_UBA = ./data/prepretrain/uba.txt
-PREPRETRAIN_DATA = ./data/prepretrain/splited*
+PREPRETRAIN_DATA = ./data/prepretrain/splited
 PRETRAIN_DATA = ./data/pretrain/pretraining.tfrecord
 TRAIN_DATA = ./data/train
 
@@ -33,9 +33,9 @@ intertass:
 
 
 .PHONY: splituba
-preprocess:
+splituba:
 	@echo "Splitting the prepretraining data for better performance."
-	split -d -l 2000000 $(PREPROCESSED_UBA) splited
+	split -d -l 2000000 $(PREPROCESSED_UBA) $(PREPRETRAIN_DATA)
 
 
 .PHONY: preprocess
@@ -46,7 +46,7 @@ preprocess: uba intertass splituba
 prepretrain:
 	@echo "Creating the pretraining data from uba preprocessed dataset."
 	python $(TRAIN)/create_pretraining_data.py \
-    --input_file=$(PREPRETRAIN_DATA) \
+    --input_file=$(PREPRETRAIN_DATA)* \
     --output_file=$(PRETRAIN_DATA) \
     --vocab_file=$(BERT_MODEL)/vocab.txt \
     --do_lower_case=False \
@@ -133,7 +133,7 @@ cleantrain:
 .PHONY: help
 help:
 	@echo "To run all the commands in order:"
-	@echo "    make preprocess  # Or make intertass uba"
+	@echo "    make preprocess  # Or make intertass uba splituba"
 	@echo "    make prepretrain "
 	@echo "    make pretrain"
 	@echo "    make train"
