@@ -12,7 +12,7 @@ PRETRAIN_MODEL = ./models/pretrained/pretraining_output
 FINETUNED_MODEL = ./models/finetuned
 
 
-TRAINING_STEPS = 10000
+TRAINING_STEPS = 15000
 SEQ_LENGTH = 64
 BATCH_SIZE = 32
 
