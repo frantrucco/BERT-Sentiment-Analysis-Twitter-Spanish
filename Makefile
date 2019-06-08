@@ -54,8 +54,7 @@ prepretrain:
     --max_predictions_per_seq=20 \
     --masked_lm_prob=0.15 \
     --random_seed=12345 \
-    --dupe_factor=5 \
-    2>&1 | tee ./log/prepretrain
+    --dupe_factor=5
 
 
 .PHONY: pretrain
@@ -73,8 +72,7 @@ pretrain:
     --max_predictions_per_seq=20 \
     --num_train_steps=$(TRAINING_STEPS) \
     --num_warmup_steps=10 \
-    --learning_rate=2e-5 \
-    2>&1 | tee ./log/pretrain
+    --learning_rate=2e-5
 
 
 .PHONY: train
@@ -92,8 +90,7 @@ train:
     --train_batch_size=$(BATCH_SIZE) \
     --learning_rate=2e-5 \
     --num_train_epochs=2.0 \
-    --output_dir=$(FINETUNED_MODEL) \
-    2>&1 | tee ./log/train
+    --output_dir=$(FINETUNED_MODEL)
 
 
 .PHONY: cleanuba
