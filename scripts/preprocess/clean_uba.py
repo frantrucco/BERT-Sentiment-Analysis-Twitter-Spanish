@@ -18,4 +18,4 @@ if __name__ == '__main__':
     with open(infile_path) as infile:
         with open(outfile_path, 'w') as outfile:
             for line in tqdm(infile, total=total):
-                outfile.write(clean(line))
+                outfile.write(clean(line) + '\n')

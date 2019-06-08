@@ -95,4 +95,4 @@ def clean(text):
     text = remove_stopwords(text)
     text = re.sub(' +', ' ', text)
     text = text.strip()
-    return text + '\n'
+    return text
