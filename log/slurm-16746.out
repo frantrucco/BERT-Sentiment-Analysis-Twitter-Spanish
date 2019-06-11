@@ -1,0 +1,187 @@
+Running make prepretrain
+Creating the pretraining data from uba preprocessed dataset.
+python ./scripts/train/create_pretraining_data.py \
+    --input_file=./data/prepretrain/splited0* \
+    --output_file=./data/pretrain/pretraining.tfrecord \
+    --vocab_file=./models/bert/vocab.txt \
+    --do_lower_case=False \
+    --max_seq_length=64 \
+    --max_predictions_per_seq=20 \
+    --masked_lm_prob=0.15 \
+    --random_seed=12345 \
+    --dupe_factor=5 \
+    2>&1 | tee ./log/prepretrain
+INFO:tensorflow:*** Reading from input files ***
+INFO:tensorflow:  ./data/prepretrain/splited04
+INFO:tensorflow:  ./data/prepretrain/splited09
+INFO:tensorflow:  ./data/prepretrain/splited03
+INFO:tensorflow:  ./data/prepretrain/splited07
+INFO:tensorflow:  ./data/prepretrain/splited00
+INFO:tensorflow:  ./data/prepretrain/splited02
+INFO:tensorflow:  ./data/prepretrain/splited08
+INFO:tensorflow:  ./data/prepretrain/splited05
+INFO:tensorflow:  ./data/prepretrain/splited01
+INFO:tensorflow:  ./data/prepretrain/splited06
+INFO:tensorflow:*** Writing to output files ***
+INFO:tensorflow:  ./data/pretrain/pretraining.tfrecord
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] solo [MASK] ##f [MASK] corazón sólo c ##reo misma [SEP] dios trap ##ito asi sal ##iste pa ##pá boca [MASK] ##mb ##la [MASK] sue ##na pis ##cul ##ichi viva futbol pis ##cul [MASK] go ##ool x ad ##mir ##o bar ##over ##o ido ##lo total [SEP]
+INFO:tensorflow:input_ids: 101 11395 103 10575 103 41609 17924 171 33472 18833 102 73738 72398 12390 21744 31119 15188 10931 108652 46478 103 27012 10330 103 15893 10219 55488 42838 35230 62058 25033 55488 42838 103 11783 47195 192 10840 20825 10133 18121 16666 10133 102418 10715 11339 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 2 4 20 23 33 34 43 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10173 28193 27916 11491 35230 11783 102418 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] US ##ER ja ##ja [MASK] va ##mos dos cam ##ilas ná [MASK] ##co ##oo US [MASK] ja ##ja ##ja [MASK] si ac ##a aunque ne ##van ##do sal ##is US ##ER nau [MASK] [MASK] ##mos corazón US ##ER deja ##s sola nuevo hab ##lo mas vida [SEP] [MASK] ##cesi ##to amigos ##ss ♡ ♡ url [SEP]
+INFO:tensorflow:input_ids: 101 10808 24093 10201 10320 103 10321 13386 10398 88406 92784 33873 103 10812 22659 10808 103 10201 10320 10320 103 10294 13621 10113 15126 10554 12955 10317 31119 10291 10808 24093 60042 103 103 13386 41609 10808 24093 46624 10107 19769 15249 16266 10715 11856 11926 102 103 87940 10340 29097 13420 1869 1869 88767 102 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 1 5 9 12 16 20 33 34 48 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10808 10320 88406 19065 24093 10320 15922 10321 10554 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] US ##ER sos pelo [MASK] US ##ER sig ##o espera [MASK] apare ##zca ##s [MASK] ar ##bol ##ito [SEP] sent ##imos cerca aunque estes [MASK] lejos agus ##tin mu ##ero qui [MASK] comer ##te be ##sos US ##ER buen dia chi ##quito ve ##o dor ##miste bien ##łk ##ER [MASK] mu ##erta [MASK] US ##ER estat ##ura venti ##lado ##r porta [MASK] [SEP]
+INFO:tensorflow:input_ids: 101 10808 24093 13957 11904 103 10808 24093 11546 10133 54373 103 83360 73707 10107 103 10456 22729 12390 102 14541 75086 13698 15126 27902 103 97023 12732 15364 12361 13739 10355 103 96699 10216 10347 17795 10808 24093 49341 10671 14325 68859 10323 10133 33518 93411 12028 83254 24093 103 12361 43861 103 10808 24093 14543 11465 68711 31905 10129 17953 103 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 5 11 15 25 32 48 50 53 55 62 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 96276 10605 81439 15176 13739 10808 13636 10107 24093 19156 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] yuta cu [MASK] [MASK] hacia bol ##uda queria entrar casa mol ##esto vecinos mi ##erda [MASK] yuta nose sac ##o tant ##as lag ##rima ##s poder seguir ll ##oran ##do tr ##é sub [SEP] US [MASK] raro anda dor ##mir [MASK] originali ##dad ami [MASK] ##g si h ##d ##p mari [MASK] ##i ja [MASK] ##ja ##ja ##ja [MASK] [MASK] amigos ##ss [SEP]
+INFO:tensorflow:input_ids: 101 20821 10854 103 103 15483 14038 18497 110611 26316 12088 39520 50192 48399 12132 74209 103 20821 63800 109436 10133 14222 10403 14587 65445 10107 13045 27157 22469 74482 10317 32221 10333 13987 102 10808 103 96646 42588 33518 20825 103 93844 14084 16992 103 10240 10294 176 10162 10410 24538 103 10116 10201 103 10320 10320 10320 103 103 29097 13420 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 3 4 16 36 41 45 52 55 59 60 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 98337 23031 19931 24093 47707 21127 41163 10320 96825 10812 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] hace meses q ve ##o propaganda [MASK] ##onin ##o primer nen ##a q aparece jugando ray ##uela sigue url [SEP] [MASK] ##n in ##venta [MASK] haciendo hombre vale oro div ##erti ##te jugando me ##xi ##ju ##egos url qualification ##oo fie ##ster ##os enam ##oran ins droits en ##cant ##a [MASK] ##me horas cont ##хона s col ##ón nave [MASK] toda piel [SEP]
+INFO:tensorflow:input_ids: 101 18414 17359 185 10323 10133 34510 103 76788 10133 11501 21602 10113 185 20962 93045 27212 40679 33198 88767 102 103 10115 10106 104270 103 44037 24151 51435 16002 76486 49366 10216 93045 10911 20572 10761 53078 88767 47186 22659 29959 12765 10310 36371 74482 15498 30217 10110 62745 10113 103 10627 22759 60146 96278 187 12678 11482 20839 103 15650 62367 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 2 7 8 21 25 39 47 51 55 60 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 17359 10215 76788 68448 10129 34860 27773 42003 21899 16381 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] US ##ER aa ##ah [MASK] ##e [SEP] ah [MASK] ##fu ##e re cu ##el ##go [SEP]
+INFO:tensorflow:input_ids: 101 10808 24093 28335 12257 103 10112 102 69863 103 20758 10112 11639 10854 10570 10797 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 4 5 9 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 12257 11499 10549 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] sal ##io re esta ##far ##on eu comprar [MASK] lab ##ial sale bien igual re li ##ndo e ##h hijos puta co ##brar ##on mas lab [MASK] diciendo ultra mate pin [MASK] de ##dos [MASK] ##o diente [MASK] ga ##tos algun [MASK] [MASK] [MASK] quedar nunca su ##pist ##e dar url [SEP] [MASK] [MASK] morir sola fe ##a mu ##erta ve ##o [SEP]
+INFO:tensorflow:input_ids: 101 31119 10638 11639 11504 29731 10263 14444 65395 103 93409 15619 15488 12028 18691 11639 11614 10605 173 10237 26855 29306 11170 69388 10263 11856 93409 103 85218 71560 43465 59227 103 10104 11181 103 10133 28004 103 11887 13318 92362 103 103 103 42003 19096 10198 104215 10112 12923 88767 102 103 103 26402 19769 34778 10113 12361 43861 10323 10133 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 9 27 32 35 38 42 43 44 53 54 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10627 15619 10216 41924 10107 42840 58440 21751 12556 10157 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] US ##ER sabe ##s [MASK] nen [MASK] seguro [MASK] ##e US ##ER voo ##os extra ##ñas op ##inen mas ah ##orren come ##ntarios [MASK] [MASK] qui ##ero url [SEP] hacer ##rr ocupa lugar coraz ##on [SEP]
+INFO:tensorflow:input_ids: 101 10808 24093 36551 10107 103 21602 103 81746 103 10112 10808 24093 85413 10310 19868 29427 10303 12398 11856 69863 94897 10678 94542 103 103 10355 13739 88767 102 21267 47707 36978 12081 88629 10263 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 5 7 9 13 24 25 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 18012 10113 10547 85413 19648 32990 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ##ero ver ##la chi ##vi [MASK] int [MASK] ##dad veces hace ##mos cosas mas malo [MASK] [MASK] dal ##ee ##e chi [MASK] pode ##s salir puta venir amo amo [MASK] go ##mita ##s ahora problema [MASK] ##n sabe ##n met ##en nadie llama op ##inan nadie interes [SEP] nunca ol ##vide ##s palabras dijo alguien [MASK] ##jado palabras siempre [MASK] ##so [MASK] [SEP]
+INFO:tensorflow:input_ids: 101 13739 16719 10330 14325 11310 103 26391 103 14084 17623 18414 13386 45632 11856 34989 103 103 10740 13321 10112 14325 103 14552 10107 54972 29306 43259 20142 20142 103 11783 63496 10107 29291 17982 103 10115 36551 10115 10428 10136 89729 47281 10303 39646 89729 82927 102 19096 30668 41638 10107 35678 34969 107092 103 63850 35678 22536 103 11669 103 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 6 8 16 17 22 30 36 56 60 62 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 11432 20934 24301 41924 11310 14136 55537 50736 10355 27337 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ret ##we [MASK] ##d bel ##gra ##no ##c ##ba US ##ER [MASK] [MASK] [MASK] ##ra ##via lema ave ##lda ##ño es ##pin ##dola rike ##mberg l ##ért ##ora á ##lva ##rez [MASK] [SEP] pen ##dej ##as años dan [SEP]
+INFO:tensorflow:input_ids: 101 62893 12577 103 10162 65817 25635 10343 10350 10537 10808 24093 103 103 103 10288 13372 93661 47145 23388 14652 10196 17298 82961 82829 49819 180 22506 14945 255 31600 34305 103 102 66558 90062 10403 11278 10215 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 3 12 13 14 18 32 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 14766 41148 51814 10148 47145 88767 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ah lu ##ciano vo [MASK] meter tro ##mpa ##da ja ##ja ##ja ##ja ##ja US ##ER hijo mi ##erda sé habla ##s mu ##gri ##enta ag ##rade ##ce considerada vos mi [MASK] dice [MASK] ##ciano grupo [SEP] extra [MASK] ##titi ##λης [SEP]
+INFO:tensorflow:input_ids: 101 69863 14657 64043 12556 103 10586 42169 31285 10229 10201 10320 10320 10320 10320 10808 24093 18611 12132 74209 15492 55537 10107 12361 59497 23420 16942 18752 10419 26852 63299 12132 103 20730 103 64043 12282 102 19868 103 87344 52595 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 5 12 32 34 39 41 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10157 10320 74209 14657 13995 10107 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] bol ##udo dia haciendo pu ##edo mira ##r rapid ##os fur ##ioso ##s [MASK] ##arm ##e chi ##cos cantando canción ll ##oran [MASK] li ##ndos momentos qui ##ero [MASK] peso puta [SEP] eu ven ##a queria ir ver la ##li [MASK] ##raz [MASK] di ay [MASK] ver ##guen [MASK] qui ##ero volver año pasado empezar ultimo año secundaria [MASK] año mi [MASK] [SEP]
+INFO:tensorflow:input_ids: 101 14038 33498 10671 44037 34597 32435 51259 10129 39782 10310 61001 55662 10107 103 76171 10112 14325 15023 89527 17361 22469 74482 103 11614 77287 49021 10355 13739 103 23072 29306 102 14444 26044 10113 110611 10478 16719 10109 10390 103 29948 103 10120 11538 103 16719 104338 103 10355 13739 45075 11734 38070 108751 17723 11734 59409 103 11734 12132 103 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 14 18 23 29 41 43 46 49 59 62 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 41441 15023 10317 54972 10183 10133 10165 10637 62055 74209 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] sé mira ##r net ##f ##li ##x qui ##ero [MASK] [SEP] años mand ##ar audio cristal desire [MASK] mil años [SEP]
+INFO:tensorflow:input_ids: 101 15492 51259 10129 11988 10575 10390 10686 10355 13739 103 102 11278 63790 10354 23685 66664 52253 103 15033 11278 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 4 10 18 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 11988 11951 10333 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ##aa ♪ [UNK] ♪ duro duro dal ##e mam ##i ♪ [UNK] si sol vend ##iera pasti ##llas [MASK] [MASK] ##ría depresión [MASK] verdadero [MASK] machos alfa quit [MASK] [MASK] ##ficaciones what ##sa ##pp [MASK] hem ##bras celo pase ##n [MASK] rat ##o cu ##rios ##as ja [SEP] fl ##课 [MASK] ##f ##lu ##ya hoy dal ##e sh ##amp ##u ♪ [UNK] [SEP]
+INFO:tensorflow:input_ids: 101 17394 1873 100 1873 60334 60334 10740 10112 20933 10116 1873 100 10294 15566 43445 18360 91688 29800 103 103 15792 102100 103 86163 103 48525 45351 101237 103 103 53018 12976 10466 16587 103 14166 37360 79952 105921 10115 103 33062 10133 10854 18068 10403 10201 102 58768 117128 103 10575 11435 10679 25235 10740 10112 48201 53692 10138 1873 100 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 19 20 23 25 29 30 35 41 50 51 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 15928 91885 100 10107 73983 75349 23575 15189 105066 10106 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ##dem [MASK] [MASK] ne ##cesi ##tam ##os dejar [MASK] 亢 pre ##oc ##upa ##rno ##s cosas [MASK] ##as sentido US ##ER gu ##sta ce ##rve ##za public ##ziak ja ##ja [MASK] am ##e public ##idades qui ##lmes [MASK] ##amer ##ica ver [SEP] pie ##ns ##o leva ##ntar [MASK] ##a hora ir escuela pre ##fier ##o hab ##lem ##os contest [MASK] corta ##do [SEP]
+INFO:tensorflow:input_ids: 101 16050 103 103 10554 87940 37583 10310 64957 103 2164 12229 25125 25009 22611 10107 45632 103 10403 25422 10808 24093 75980 10972 10794 40252 10637 11683 90723 10201 10320 103 10392 10112 11683 26769 10355 89831 103 105529 11043 16719 102 19642 10891 10133 40754 30632 103 10113 24301 10478 25873 12229 28420 10133 16266 19343 10310 37596 103 53134 10317 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 2 3 9 10 17 28 31 38 48 60 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10310 73738 10836 13386 88042 26769 10320 39313 88406 10171 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] due ##ño luna lo ##mas ami ##guito amigo [MASK] ##bes [SEP] lleva ##te [MASK] ##ra so nai [MASK] US ##ER tomando te ##cito mal [MASK] url juega pi ##chi merci ##er hol ##a pin ##amar US ##ER ja ##ja ##ja ##j hab ##ia visto [MASK] so nai ##s US ##ER va ##yas [MASK] [MASK] US ##ER mall ##a para [MASK] agar ##ram [SEP]
+INFO:tensorflow:input_ids: 101 10850 14652 44885 10406 12922 16992 64744 27989 103 16216 102 30818 10216 103 10288 10380 76206 103 10808 24093 71290 10361 39811 15189 103 88767 56879 24109 12806 109325 10165 110516 10113 59227 93196 10808 24093 10201 10320 10320 10418 16266 10280 22076 103 10380 76206 10107 10808 24093 10321 50135 103 103 10808 24093 76437 10113 10220 103 36769 13845 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 9 10 14 18 25 45 47 53 54 60 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 24109 16216 24151 10107 10213 19096 76206 27452 10835 80569 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ab ##ro t ##w contando sú ##per noche mejor mir ##o universo lo ##urde [MASK] leva ##nte [MASK] [MASK] [MASK] ##r elu ##ni ##verso ##del [MASK] ##des [SEP] ##esto gente in ##esta ##ble [MASK] gi ##mna ##sio buen día mart ##es duel ##e cuerpo ojo buen [MASK] arra ##nca [MASK] ##ll [MASK] ##ís ##imo fin semana mañana vuelve trabajar [MASK] personas eli [SEP]
+INFO:tensorflow:input_ids: 101 11357 10567 188 10874 89569 17024 12713 29190 18345 36077 10133 40614 10406 55116 103 40754 11227 103 103 103 10129 95575 10342 66005 14494 103 10920 102 50192 28775 10106 18487 11203 103 38356 67786 28002 49341 14184 50809 10171 66330 10112 24647 87117 49341 103 38192 27480 103 11231 103 20096 15487 11826 24850 61816 50837 42362 103 14888 18166 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 15 18 19 20 26 34 47 50 52 60 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10107 46960 10112 51259 17964 45411 10133 18691 49341 34099 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] hacer [MASK] US ##ER quer ##es hacer [MASK] enten ##di US ##ER ja [MASK] Và ##ja ##ja ##ja ##ja ##ja ##ja [MASK] ##ja ##j ##jaa [MASK] ##ja ##ja ##ja ##ja ##ja [SEP] ##ja ##ja [MASK] ##ja ##j ##jaa ##j zo ##ee ##e sac ##ame celular url US ##ER ac ##abo leer ten ##es cabeza cu ##cura ##cha nai ##ara gu [MASK] vino [SEP]
+INFO:tensorflow:input_ids: 101 21267 103 10808 24093 59599 10171 21267 103 61578 10703 10808 24093 10201 103 108369 10320 10320 10320 10320 10320 10320 103 10320 10418 52444 103 10320 10320 10320 10320 10320 102 10320 10320 103 10320 10418 52444 10418 12555 13321 10112 109436 18969 60194 88767 10808 24093 13621 90276 58667 11769 10171 26497 10854 47703 12964 76206 12677 75980 103 39746 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 2 8 14 15 22 26 35 40 51 61 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 11491 11538 10320 10320 10320 10320 10320 12555 58667 10972 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] US ##ER ahora quiere [MASK] trí ##o dieron [MASK] ##edo ja ##ja [MASK] [MASK] [SEP] anda ##s haciendo falta vos ##g url [SEP]
+INFO:tensorflow:input_ids: 101 10808 24093 29291 68448 103 20098 10133 63723 103 32435 10201 10320 103 103 102 42588 10107 44037 23821 63299 10240 88767 102 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_positions: 5 9 13 14 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10115 12132 10320 10320 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:*** Example ***
+INFO:tensorflow:tokens: [CLS] ##ta dij ##eron q des ##cor ##char ##on US ##ER ms vo [MASK] seguir sub ##iendo fotos ja ##ja ##ja US ##ER m [MASK] ce ##bada US ##ER ca re li ##nda ca ##es re bien US ##ER v [MASK] mucha te ##ta re [MASK] ##me [MASK] ##quito plis ##ss dios [SEP] US ##ER g [MASK] en ##cant ##as [MASK] her [MASK] [SEP]
+INFO:tensorflow:input_ids: 101 10213 43315 22958 185 10139 49167 39142 10263 10808 24093 92287 12556 103 27157 13987 18426 78781 10201 10320 10320 10808 24093 181 103 10794 43342 10808 24093 11135 11639 11614 11861 11135 10171 11639 12028 10808 24093 190 103 85346 10361 10213 11639 103 10627 103 68859 67957 13420 73738 102 10808 24093 175 103 10110 62745 10403 103 10485 103 102
+INFO:tensorflow:input_mask: 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:segment_ids: 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1 1 1 1 1 1 1 1
+INFO:tensorflow:masked_lm_positions: 13 20 22 24 40 45 47 56 60 62 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_ids: 10157 10320 24093 10410 10350 69215 10514 10240 13957 57374 0 0 0 0 0 0 0 0 0 0
+INFO:tensorflow:masked_lm_weights: 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 1.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0 0.0
+INFO:tensorflow:Wrote 21023849 total instances
